@@ -1,6 +1,7 @@
 import java.time.LocalDateTime;
+import java.util.Collections;
 
-public class Sessao {
+public class Sessao implements Comparable<Sessao>{
 	private Filme filme;
 	private Local local;
 	private float preco;
@@ -55,9 +56,7 @@ public class Sessao {
 		this.preco = preco;
 	}
 
-	public LocalDateTime getData() {
-		return data;
-	}
+	public LocalDateTime getData() { return data; }
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
@@ -71,18 +70,9 @@ public class Sessao {
 		this.comentario = comentario;
 	}
 
-	@Override
-	public String toString() {
-		return "Nome: " + filme.getNome() + '\'' +
-				"Nota: " + filme.getNota() + '\'' +
-				"Favorito" + filme.isFavorito() + '\'' +
-				"Data: " + get
-		/*"Sessao{" +
-				"filme=" + filme +
-				", local=" + local +
-				", preco=" + preco +
-				", data=" + data +
-				", comentario='" + comentario + '\'' +
-				'}';*/
+
+	public int compareTo(Sessao sessao) {
+		return this.filme.getNome().compareToIgnoreCase(sessao.getFilme().getNome());
 	}
+
 }
